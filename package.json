@@ -15,13 +15,13 @@
     "docs/API.md",
     "docs/LIBRARY.md",
     "docs/LICENSE*",
-    "core",
-    "vendor/pako"
+    "core"
   ],
   "scripts": {
-    "lint": "eslint app core po/po2js po/xgettext-html tests utils",
     "test": "karma start karma.conf.js",
-    "prepublish": "node ./utils/use_require.js --clean"
+    "prepublish": "node ./utils/use_require.js --clean",
+    "serve-build": "webpack-dev-server --config ./webpack.config.js --open",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -40,27 +40,28 @@
   },
   "homepage": "https://github.com/novnc/noVNC",
   "devDependencies": {
+    "@babel/cli": "*",
     "@babel/core": "*",
     "@babel/plugin-syntax-dynamic-import": "*",
     "@babel/plugin-transform-modules-commonjs": "*",
     "@babel/preset-env": "*",
-    "@babel/cli": "*",
+    "@chiragrupani/karma-chromium-edge-launcher": "*",
+    "@types/chart.js": "^2.9.32",
     "babel-plugin-import-redirect": "*",
-    "browserify": "*",
     "babelify": "*",
-    "core-js": "*",
+    "browserify": "*",
     "chai": "*",
     "commander": "*",
+    "core-js": "*",
     "es-module-loader": "*",
     "eslint": "*",
     "fs-extra": "*",
     "jsdom": "*",
     "karma": "*",
-    "karma-mocha": "*",
     "karma-chrome-launcher": "*",
-    "@chiragrupani/karma-chromium-edge-launcher": "*",
     "karma-firefox-launcher": "*",
     "karma-ie-launcher": "*",
+    "karma-mocha": "*",
     "karma-mocha-reporter": "*",
     "karma-safari-launcher": "*",
     "karma-script-launcher": "*",
@@ -72,9 +73,16 @@
     "rollup": "*",
     "rollup-plugin-node-resolve": "*",
     "sinon": "*",
-    "sinon-chai": "*"
+    "sinon-chai": "*",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/chrome": "0.0.137",
+    "@types/moment": "^2.13.0",
+    "moment": "^2.29.1"
+  },
   "keywords": [
     "vnc",
     "rfb",
